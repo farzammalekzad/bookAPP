@@ -1,28 +1,45 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="secondary">
     <ion-title>جستجوی کتاب</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form>
+  <form #f="ngForm" (ngSubmit)="onSearch(f)">
     <ion-grid>
       <ion-row>
         <ion-col size-sm="12" size-md="8" offset-md="2">
           <ion-item>
             <ion-img src="../../assets/img/book2.png"></ion-img>
-            <ion-label color="primary" position="floating">عنوان کتاب</ion-label>
-            <ion-input dir="ltr" name="search" type="text" required></ion-input>
+            <ion-label color="dark" position="floating">عنوان کتاب به زبان انگلیسی</ion-label>
+            <ion-input dir="ltr" ngModel name="search" type="text" color="dark" required #searchCtrl="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!searchCtrl.valid && searchCtrl.touched" lines="none">
+            <ion-label>
+              <p>عنوان کتاب ذکر شود</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="12" size-md="8" offset-md="2">
+          <ion-item>
+            <ion-label>نمایش نتایج جستجو</ion-label>
+            <ion-select name="number" placeholder="تعداد" value="3">
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+              <ion-select-option value="15">15</ion-select-option>
+              <ion-select-option value="25">25</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button class="ion-margin" color="primary"  fill="outline" expand="block" type="submit">جستجو</ion-button>
+          <ion-button class="ion-margin" color="secondary" expand="block" type="submit" [disabled]="!f.valid">جستجو</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
-
   </form>
 
 

@@ -1,9 +1,22 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>list</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title>نتایج جستجو</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content dir="ltr">
+  <ion-list *ngIf="!isLoading && books.length > 0">
+    <ion-item-sliding *ngFor="let book of books" #itemSliding>
+      <ion-item dir="ltr" slot="start" lines="none" detail-icon>
+        <ion-avatar slot="start">
+          <ion-img *ngIf="book.cover" src="{{book.cover}}"></ion-img>
+          <ion-img *ngIf="!book.cover" src="../../../assets/img/book2.png"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{book.title}}</h2>
+          <p>{{book.author}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
