@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {BookResultModel} from './bookres.model';
+import {Storage} from '@capacitor/storage';
 
 interface DataSearch {
   title: string;
@@ -27,9 +28,9 @@ export class SearchService {
       num
     };
     return this.http.post<BookResultModel[]>('http://localhost:3000/search', {...dataSearch})
-      .pipe(map((resData) => {
-        this.searchResult.next(resData);
+      .pipe(map(async (resData) => {
+        await this.searchResult.next(resData);
         return resData;
-    }));
+    }), );
   }
 }

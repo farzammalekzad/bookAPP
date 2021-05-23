@@ -20,14 +20,13 @@ export class DiscoverPage implements OnInit, OnDestroy {
 
  async getSearchResult(title: string, num: number) {
     const loading = await this.loadingCtrl.create({
-        message: 'در حال ارسال'
+        message: 'در حال بررسی'
     });
     await loading.present();
-    this.searchSub = await this.searchService.titleSearch(title, num).subscribe((resData) => {
-      console.log(resData);
+    this.searchSub = this.searchService.titleSearch(title, num).subscribe(() => {
+      loading.dismiss();
+      this.routes.navigateByUrl('/search/tabs/list');
     });
-    await loading.dismiss();
-    await this.routes.navigateByUrl('/search/tabs/list');
   }
 
   onSearch(form: NgForm) {

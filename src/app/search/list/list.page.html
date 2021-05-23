@@ -5,12 +5,19 @@
 </ion-header>
 
 <ion-content dir="ltr">
-  <ion-list *ngIf="!isLoading && books.length > 0">
+  <div *ngIf="isLoading" class="ion-text-center">
+    <ion-spinner color="secondary"></ion-spinner>
+  </div>
+  <div *ngIf="!isLoading && books.length == 0" class="ion-text-center">
+    <ion-label color="primary">
+      <p>نتایجی یافت نشد</p>
+    </ion-label>
+  </div>
+  <ion-list *ngIf="!isLoading && books.length >= 0">
     <ion-item-sliding *ngFor="let book of books" #itemSliding>
-      <ion-item dir="ltr" slot="start" lines="none" detail-icon>
+      <ion-item dir="ltr" slot="start" lines="none">
         <ion-avatar slot="start">
-          <ion-img *ngIf="book.cover" src="{{book.cover}}"></ion-img>
-          <ion-img *ngIf="!book.cover" src="../../../assets/img/book2.png"></ion-img>
+          <ion-img src="../../../assets/img/book2.png"></ion-img>
         </ion-avatar>
         <ion-label>
           <h2>{{book.title}}</h2>

@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SearchService} from '../search.service';
 import {Subscription} from 'rxjs';
 import {BookResultModel} from '../bookres.model';
+import {Storage} from '@capacitor/storage';
 
 @Component({
   selector: 'app-list',
@@ -12,15 +13,17 @@ export class ListPage implements OnInit, OnDestroy {
   isLoading = false;
   searchSub: Subscription;
   books: BookResultModel[];
+  errMess: string;
   constructor(private searchService: SearchService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.searchSub = this.searchService.getAllSearchResult().subscribe((bks) => {
-        this.isLoading = true;
-        this.books = bks;
-        this.isLoading = false;
+      this.books = bks;
+      this.isLoading = false;
     });
   }
+
   ngOnDestroy() {
     if (this.searchSub) {
       this.searchSub.unsubscribe();
