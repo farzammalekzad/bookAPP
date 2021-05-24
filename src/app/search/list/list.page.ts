@@ -9,7 +9,7 @@ import {Storage} from '@capacitor/storage';
   templateUrl: './list.page.html',
   styleUrls: ['./list.page.scss'],
 })
-export class ListPage implements OnInit, OnDestroy {
+export class ListPage implements OnInit {
   isLoading = false;
   searchSub: Subscription;
   books: BookResultModel[];
@@ -24,10 +24,11 @@ export class ListPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    if (this.searchSub) {
-      this.searchSub.unsubscribe();
-    }
+  deleteSearchResult() {
+    this.searchService.searchResult.next([]);
   }
 
-}
+
+  }
+
+

@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar color="secondary">
     <ion-title>نتایج جستجو</ion-title>
+    <ion-button slot="end" fill="clear" color="light" routerLink="/search/tabs/list" (click)="deleteSearchResult()" >حذف نتایج جستجو</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +16,7 @@
   </div>
   <ion-list *ngIf="!isLoading && books.length >= 0">
     <ion-item-sliding *ngFor="let book of books" #itemSliding>
-      <ion-item dir="ltr" slot="start" lines="none">
+      <ion-item dir="ltr" slot="start" lines="none" [routerLink]="[book.id]" >
         <ion-avatar slot="start">
           <ion-img src="../../../assets/img/book2.png"></ion-img>
         </ion-avatar>

@@ -1,9 +1,89 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/search/tabs/list" text="بازگشت"></ion-back-button>
+    </ion-buttons>
+    <ion-title>جزئیات کتاب</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div *ngIf="isLoading" class="ion-text-center">
+    <ion-spinner color="secondary"></ion-spinner>
+  </div>
+
+  <ion-grid *ngIf="!isLoading">
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2" class="ion-text-center">
+        <ion-img src="../../../assets/img/book2.png"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-label><h2>عنوان کتاب :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none">
+          <ion-text>{{book.title}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-label><h2>نویسنده :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none">
+          <ion-text>{{book.author}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-label><h2>سال انتشار :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none">
+          <ion-text>{{book.year}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-label><h2>زبان :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none">
+          <ion-text>{{book.language}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-label><h2>تعداد صفحات :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none">
+          <ion-text>{{book.pages}}</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm = 12 size-md="8" offset-md = "2">
+        <ion-item lines="none">
+          <ion-label><h2>حجم فایل :</h2></ion-label>
+        </ion-item>
+        <ion-item dir="ltr" lines="none">
+          <ion-text>{{book.size/1000000}} MB</ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button class="ion-margin" color="secondary" expand="block" type="button">دانلود کتاب</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 
 </ion-content>

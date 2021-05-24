@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {find, map} from 'rxjs/operators';
 import {BookResultModel} from './bookres.model';
 import {Storage} from '@capacitor/storage';
 
@@ -33,4 +33,13 @@ export class SearchService {
         return resData;
     }), );
   }
+
+  getBookById(id: string) {
+     return this.getAllSearchResult().pipe(map((books) => {
+       return books.find((book) => {
+         return book.id === id;
+       });
+     }));
+  }
+
 }

@@ -1,5 +1,7 @@
 {
   "name": "bookSearch",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
