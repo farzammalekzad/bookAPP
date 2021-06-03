@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/search/tabs/list" text="بازگشت"></ion-back-button>
     </ion-buttons>
-    <ion-title>جزئیات کتاب</ion-title>
+    <ion-title class="animate__animated animate__rubberBand">جزئیات کتاب</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,7 @@
   <ion-grid *ngIf="!isLoading">
     <ion-row>
       <ion-col size-sm = 12 size-md="8" offset-md = "2" class="ion-text-center">
-        <ion-img src="../../../assets/img/book2.png"></ion-img>
+        <ion-img src="../../assets/img/book2.png"></ion-img>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -80,7 +80,8 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button class="ion-margin" color="secondary" expand="block" type="button">دانلود کتاب</ion-button>
+        <ion-button class="ion-margin" color="secondary" expand="block" type="button" (click)="openBook(book.directLink)">دانلود</ion-button>
+        <ion-button class="ion-margin" color="secondary" expand="block" disabled type="button" (click)="openBook(book.cover)">باز کردن جلد کتاب</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

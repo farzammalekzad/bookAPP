@@ -27,7 +27,7 @@ export class SearchService {
       title,
       num
     };
-    return this.http.post<BookResultModel[]>('http://localhost:3000/search', {...dataSearch})
+    return this.http.post<BookResultModel[]>('http://book.mohammad-malekzad.ir/search', {...dataSearch})
       .pipe(map(async (resData) => {
         await this.searchResult.next(resData);
         return resData;

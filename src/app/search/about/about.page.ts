@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Browser} from "@capacitor/browser";
 
 @Component({
   selector: 'app-about',
@@ -11,5 +12,9 @@ export class AboutPage implements OnInit {
 
   ngOnInit() {
   }
+
+  openMalekzadSite = async () => {
+    await Browser.open({url: 'http://www.mohammad-malekzad.ir'});
+  };
 
 }

@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
-import {LoadingController} from '@ionic/angular';
+import {AlertController, LoadingController} from '@ionic/angular';
 import {SearchService} from '../search.service';
 import {Subscription} from 'rxjs';
 
@@ -11,11 +11,39 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./discover.page.scss'],
 })
 export class DiscoverPage implements OnInit, OnDestroy {
+
   private searchSub: Subscription;
+  constructor(private routes: Router,
+              private loadingCtrl: LoadingController,
+              private searchService: SearchService,
+              private alertCtrl: AlertController) { }
 
-  constructor(private routes: Router, private loadingCtrl: LoadingController, private searchService: SearchService) { }
+  async ngOnInit() {
+    let connection = false;
+    const loading = await this.loadingCtrl.create({
+      message: 'در حال آماده سازی'
+    });
+    await loading.present();
+    await setTimeout(() => {
+      connection = true;
+      loading.dismiss();
+      this.trialAlert();
+    }, 1000);
 
-  ngOnInit() {
+
+  }
+  async ionViewWillEnter() {
+    let connection = false;
+    const loading = await this.loadingCtrl.create({
+      message: 'در حال آماده سازی'
+    });
+    await loading.present();
+    await setTimeout(() => {
+      connection = true;
+      loading.dismiss();
+    }, 1000);
+
+
   }
 
  async getSearchResult(title: string, num: number) {
@@ -37,6 +65,18 @@ export class DiscoverPage implements OnInit, OnDestroy {
     const num = form.value.num;
     form.reset();
     return this.getSearchResult(title, num);
+  }
+
+  async trialAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'توجه',
+      subHeader: 'نسخه آزمایشی',
+      // eslint-disable-next-line max-len
+      message: 'شما قادر به دانلود کلیه کتاب های جستجو شده نمی باشید جهت استفاده کامل، نسخه بدون محدودیت را خریداری فرمایید',
+      buttons: ['باشه']
+    });
+    await alert.present();
+
   }
 
   ngOnDestroy() {
