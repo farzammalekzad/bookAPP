@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {AlertController, LoadingController} from '@ionic/angular';
 import {SearchService} from '../search.service';
 import {Subscription} from 'rxjs';
+import {Network} from '@capacitor/network';
 
 @Component({
   selector: 'app-discover',
@@ -27,8 +28,8 @@ export class DiscoverPage implements OnInit, OnDestroy {
     await setTimeout(() => {
       connection = true;
       loading.dismiss();
-      this.trialAlert();
-    }, 1000);
+      this.logCurrentStatus();
+    }, 9000);
 
 
   }
@@ -41,9 +42,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
     await setTimeout(() => {
       connection = true;
       loading.dismiss();
-    }, 1000);
-
-
+    }, 9000);
   }
 
  async getSearchResult(title: string, num: number) {
@@ -78,6 +77,18 @@ export class DiscoverPage implements OnInit, OnDestroy {
     await alert.present();
 
   }
+
+  logCurrentStatus = async () => {
+    const status = await Network.getStatus();
+    if (!status.connected) {
+      const alert = await this.alertCtrl.create({
+        header: 'اتصال به اینترنت',
+        message: 'شما به اینترنت متصل نمی باشید',
+        buttons: ['باشه']
+      });
+      await alert.present();
+    }
+  };
 
   ngOnDestroy() {
     if (this.searchSub) {

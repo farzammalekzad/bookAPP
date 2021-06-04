@@ -40,7 +40,7 @@ export class ListPage implements OnInit {
       header: 'توجه',
       subHeader: 'نسخه آزمایشی',
       // eslint-disable-next-line max-len
-      message: 'شما قادر به دانلود کلیه کتاب های جستجو شده نمی باشید جهت استفاده کامل، نسخه بدون محدودیت را خریداری فرمایید',
+      message: 'شما تنها قادر به دانلود اولین کتاب یافته شده می باشید لطفا جهت استفاده کامل، نسخه بدون محدودیت را خریداری فرمایید',
       buttons: ['باشه']
     });
     await alert.present();

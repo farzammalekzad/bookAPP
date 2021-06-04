@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Capacitor} from '@capacitor/core';
-import {Platform} from '@ionic/angular';
+import {AlertController, Platform} from '@ionic/angular';
 import {SplashScreen} from '@capacitor/splash-screen';
 
 
@@ -11,7 +11,9 @@ import {SplashScreen} from '@capacitor/splash-screen';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(@Inject(DOCUMENT) private document: Document, public platform: Platform) {
+  constructor(@Inject(DOCUMENT) private document: Document,
+              private alertCtrl: AlertController,
+              public platform: Platform) {
     this.document.documentElement.dir = 'rtl';
     this.initializeApp();
   }

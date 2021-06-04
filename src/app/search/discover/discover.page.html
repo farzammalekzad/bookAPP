@@ -13,11 +13,11 @@
           <ion-item>
             <ion-img src="../../assets/img/book2.png"></ion-img>
             <ion-label color="dark" position="floating">عنوان کتاب به زبان انگلیسی</ion-label>
-            <ion-input dir="ltr" ngModel id="search" name="search" type="text" color="dark" required #searchCtrl="ngModel" minlength="5"></ion-input>
+            <ion-input dir="ltr" ngModel id="search" name="search" type="text" color="dark" required #searchCtrl="ngModel" minlength="6"></ion-input>
           </ion-item>
           <ion-item *ngIf="searchCtrl.errors?.minlength" lines="none">
             <ion-label>
-              <p>حداقل 5 کارکتر باید نوشته شود</p>
+              <p>حداقل 6 کارکتر باید نوشته شود</p>
             </ion-label>
           </ion-item>
         </ion-col>
