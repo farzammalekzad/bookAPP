@@ -6,7 +6,9 @@ export interface BookResultModel {
   year: string;
   language: string;
   pages: string;
+  publisher: string;
   size: string;
+  extension: string;
   cover: string;
   directLink: string;
 }

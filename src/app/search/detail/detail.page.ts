@@ -21,11 +21,7 @@ export class DetailPage implements OnInit {
   searchSub: Subscription;
   book: BookResultModel;
   isLoading = false;
-  downloadUrl = '';
-  myFiles = [];
-  downloadProgress = 0;
-  data = [];
-  cover: string;
+  downloadUrl: string;
 
 
   constructor(private searchService: SearchService,
@@ -40,15 +36,23 @@ export class DetailPage implements OnInit {
     this.isLoading = true;
     // eslint-disable-next-line max-len
     this.searchSub = this.activatedRoute.paramMap.subscribe((paramMap) => this.searchService.getBookById(paramMap.get('bookId')).subscribe((book) => {
+      // eslint-disable-next-line max-len
+      this.downloadUrl = `http://31.42.184.140/main/${Math.floor(parseInt(book.id, 10) / 1000) * 1000}/${book.md5.toLowerCase()}/${book.author} - ${book.title}-${book.publisher} (${book.year}).${book.extension}`;
        this.book = book;
        this.isLoading = false;
       }));
     }
 
-   openBook = async (url) => {
-    const URL = encodeURI(url);
-    await Browser.open({url: URL});
+   openBook = async () => {
+
+    await Browser.open({url: this.downloadUrl});
   };
+   openbok() {
+     const URL = encodeURI(this.downloadUrl);
+     console.log(this.downloadUrl);
+     console.log(URL);
+   }
+
 
 }
 

@@ -14,7 +14,11 @@ export class AboutPage implements OnInit {
   }
 
   openMalekzadSite = async () => {
-    await Browser.open({url: 'http://www.mohammad-malekzad.ir'});
+    await Browser.open({url: 'http://www.ketabyab.mohammad-malekzad.ir'});
+  };
+
+  openMalekzadInsta = async () => {
+    await Browser.open({url: 'https://www.instagram.com/reference_book_iran/'});
   };
 
 }

@@ -21,15 +21,11 @@ export class ListPage implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.searchSub = this.searchService.getAllSearchResult().subscribe((bks) => {
-      this.openBook = bks[0];
-      this.books = bks.slice(1);
+      this.books = bks;
       this.isLoading = false;
     });
   }
 
-  ionViewWillEnter() {
-    this.trialAlert();
-  }
 
   deleteSearchResult() {
     this.searchService.searchResult.next([]);

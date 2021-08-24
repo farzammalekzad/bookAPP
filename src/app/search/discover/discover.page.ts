@@ -29,20 +29,7 @@ export class DiscoverPage implements OnInit, OnDestroy {
       connection = true;
       loading.dismiss();
       this.logCurrentStatus();
-    }, 9000);
-
-
-  }
-  async ionViewWillEnter() {
-    let connection = false;
-    const loading = await this.loadingCtrl.create({
-      message: 'در حال آماده سازی'
-    });
-    await loading.present();
-    await setTimeout(() => {
-      connection = true;
-      loading.dismiss();
-    }, 9000);
+    }, 500);
   }
 
  async getSearchResult(title: string, num: number) {
@@ -61,21 +48,9 @@ export class DiscoverPage implements OnInit, OnDestroy {
       return;
     }
     const title = form.value.search;
-    const num = form.value.num;
+    const searchNum = form.value.num;
     form.reset();
-    return this.getSearchResult(title, num);
-  }
-
-  async trialAlert() {
-    const alert = await this.alertCtrl.create({
-      header: 'توجه',
-      subHeader: 'نسخه آزمایشی',
-      // eslint-disable-next-line max-len
-      message: 'شما قادر به دانلود کلیه کتاب های جستجو شده نمی باشید جهت استفاده کامل، نسخه بدون محدودیت را خریداری فرمایید',
-      buttons: ['باشه']
-    });
-    await alert.present();
-
+    return this.getSearchResult(title, searchNum);
   }
 
   logCurrentStatus = async () => {

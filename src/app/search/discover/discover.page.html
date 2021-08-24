@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar color="secondary">
-    <ion-title class="animate__animated animate__rubberBand">دانلود کتاب</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="animate__animated animate__rubberBand">دانلود کتاب انگلیسی</ion-title>
     <ion-button slot="end" fill="clear" color="light" routerLink="/search/tabs/list" >مشاهده نتایج</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -11,11 +11,11 @@
       <ion-row>
         <ion-col size-sm="12" size-md="8" offset-md="2">
           <ion-item>
-            <ion-img src="../../assets/img/book2.png"></ion-img>
+            <ion-img src="../../assets/img/book4.png"></ion-img>
             <ion-label color="dark" position="floating">عنوان کتاب به زبان انگلیسی</ion-label>
             <ion-input dir="ltr" ngModel id="search" name="search" type="text" color="dark" required #searchCtrl="ngModel" minlength="6"></ion-input>
           </ion-item>
-          <ion-item *ngIf="searchCtrl.errors?.minlength" lines="none">
+          <ion-item *ngIf="searchCtrl.errors?.minlength && searchCtrl.invalid && (searchCtrl.dirty || searchCtrl.touched)" lines="none">
             <ion-label>
               <p>حداقل 6 کارکتر باید نوشته شود</p>
             </ion-label>
@@ -26,18 +26,18 @@
         <ion-col size-sm="12" size-md="8" offset-md="2">
           <ion-item>
             <ion-label>نمایش نتایج جستجو</ion-label>
-            <ion-select name="number" placeholder="تعداد" value="5">
+            <ion-select ngModel name="num" placeholder="10">
               <ion-select-option value="5">5</ion-select-option>
-              <ion-select-option value="15" disabled>15</ion-select-option>
-              <ion-select-option value="25" disabled>25</ion-select-option>
-              <ion-select-option value="50" disabled>50</ion-select-option>
+              <ion-select-option value="15">15</ion-select-option>
+              <ion-select-option value="25">25</ion-select-option>
+              <ion-select-option value="50">50</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button class="ion-margin" color="secondary" expand="block" type="submit" [disabled]="!f.valid">جستجو</ion-button>
+          <ion-button class="ion-margin" color="primary" expand="block" type="submit" [disabled]="!f.valid">جستجو</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

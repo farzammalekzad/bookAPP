@@ -17,7 +17,7 @@
   <ion-list *ngIf="!isLoading && books.length >= 0">
     <ion-item *ngIf="openBook" dir="ltr" slot="start" lines="none" [routerLink]="[openBook.id]" >
       <ion-avatar slot="start">
-        <ion-img src="../../../assets/img/listbook.png"></ion-img>
+        <ion-img src="../../../assets/img/book4.png"></ion-img>
       </ion-avatar>
       <ion-label>
         <h2>{{openBook.title}}</h2>
@@ -25,9 +25,9 @@
       </ion-label>
     </ion-item>
     <ion-item-sliding *ngFor="let book of books" #itemSliding>
-      <ion-item dir="ltr" slot="start" lines="none" disabled [routerLink]="[book.id]" >
+      <ion-item dir="ltr" slot="start" lines="none" [routerLink]="[book.id]" >
         <ion-avatar slot="start">
-          <ion-img src="../../../assets/img/book2.png"></ion-img>
+          <ion-img src="../../../assets/img/book4.png"></ion-img>
         </ion-avatar>
         <ion-label>
           <h2>{{book.title}}</h2>
