@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title class="animate__animated animate__rubberBand">دانلود کتاب انگلیسی</ion-title>
+    <ion-title class="animate__animated animate__rubberBand">دانلود کتاب (نسخه آزمایشی)</ion-title>
     <ion-button slot="end" fill="clear" color="light" routerLink="/search/tabs/list" >مشاهده نتایج</ion-button>
   </ion-toolbar>
 </ion-header>
@@ -11,9 +11,9 @@
       <ion-row>
         <ion-col size-sm="12" size-md="8" offset-md="2">
           <ion-item>
-            <ion-img src="../../assets/img/book4.png"></ion-img>
+            <ion-img src="../../assets/img/lite.png"></ion-img>
             <ion-label color="dark" position="floating">عنوان کتاب به زبان انگلیسی</ion-label>
-            <ion-input dir="ltr" ngModel id="search" name="search" type="text" color="dark" required #searchCtrl="ngModel" minlength="6"></ion-input>
+            <ion-input dir="ltr" ngModel id="search" name="search" type="text" color="dark" required #searchCtrl="ngModel" minlength="6" pattern="^[\u0000-\u007F]+$"></ion-input>
           </ion-item>
           <ion-item *ngIf="searchCtrl.errors?.minlength && searchCtrl.invalid && (searchCtrl.dirty || searchCtrl.touched)" lines="none">
             <ion-label>
@@ -25,12 +25,12 @@
       <ion-row>
         <ion-col size-sm="12" size-md="8" offset-md="2">
           <ion-item>
-            <ion-label>نمایش نتایج جستجو</ion-label>
-            <ion-select ngModel name="num" placeholder="10">
-              <ion-select-option value="5">5</ion-select-option>
-              <ion-select-option value="15">15</ion-select-option>
-              <ion-select-option value="25">25</ion-select-option>
-              <ion-select-option value="50">50</ion-select-option>
+            <ion-label>نمایش نتایج جستجو (غیر فعال)</ion-label>
+            <ion-select disabled ngModel name="num" placeholder="10" okText="باشه" cancelText="همون ۱۰ تا">
+              <ion-select-option value="5">حداکثر ۵ تا</ion-select-option>
+              <ion-select-option value="15">حداکثر ۱۵ تا</ion-select-option>
+              <ion-select-option value="25">حداکثر ۲۵ تا</ion-select-option>
+              <ion-select-option value="50">حداکثر ۵۰ تا</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>

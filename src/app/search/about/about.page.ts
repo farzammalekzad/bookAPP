@@ -18,7 +18,7 @@ export class AboutPage implements OnInit {
   };
 
   openMalekzadInsta = async () => {
-    await Browser.open({url: 'https://www.instagram.com/reference_book_iran/'});
+    await Browser.open({url: 'https://www.instagram.com/downloadBook/'});
   };
 
 }

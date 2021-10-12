@@ -22,14 +22,21 @@ export class DiscoverPage implements OnInit, OnDestroy {
   async ngOnInit() {
     let connection = false;
     const loading = await this.loadingCtrl.create({
-      message: 'در حال آماده سازی'
+      message: 'آماده سازی نسخه آزمایشی'
     });
     await loading.present();
     await setTimeout(() => {
       connection = true;
       loading.dismiss();
       this.logCurrentStatus();
-    }, 500);
+      alert.present();
+    }, 1000);
+    const alert = await this.alertCtrl.create({
+      header: 'خوش آمدید',
+      message: 'جستجو کتاب تنها برای عناوین زبان اصلی مجاز است. کیبورد خود را بر روی زبان انگلیسی قرار دهید.',
+      buttons: ['باشه']
+    });
+
   }
 
  async getSearchResult(title: string, num: number) {

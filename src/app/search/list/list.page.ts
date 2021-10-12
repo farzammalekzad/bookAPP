@@ -13,6 +13,7 @@ import {AlertController} from '@ionic/angular';
 export class ListPage implements OnInit {
   isLoading = false;
   searchSub: Subscription;
+  enabledBook: BookResultModel;
   books: BookResultModel[];
   errMess: string;
   openBook: BookResultModel;
@@ -21,7 +22,8 @@ export class ListPage implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.searchSub = this.searchService.getAllSearchResult().subscribe((bks) => {
-      this.books = bks;
+      this.enabledBook = bks[0];
+      this.books = bks.slice(1);
       this.isLoading = false;
     });
   }

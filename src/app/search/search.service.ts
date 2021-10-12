@@ -27,7 +27,7 @@ export class SearchService {
       title,
       num
     };
-    return this.http.post<BookResultModel[]>('http://localhost:3000/search/search', {...dataSearch})
+    return this.http.post<BookResultModel[]>('/search/search', {...dataSearch})
       .pipe(map(async (resData) => {
         await this.searchResult.next(resData);
         return resData;
@@ -36,9 +36,7 @@ export class SearchService {
 
   getBookById(id: string) {
      return this.getAllSearchResult().pipe(map((books) => {
-       return books.find((book) => {
-         return book.id === id;
-       });
+       return books.find((book) => book.id === id);
      }));
   }
 
